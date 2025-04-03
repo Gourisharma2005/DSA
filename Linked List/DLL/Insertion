@@ -1,0 +1,77 @@
+package LinkedList;
+
+public class InsertionDLL {
+    public static class Node {
+        int data;
+        Node next;
+        Node prev;
+
+        Node(int data) {
+            this.data = data;
+        }
+    }
+
+    public static Node insertAtStart(Node head,int val){
+        Node temp = new Node(val);
+        if(head==null) return temp;
+        temp.next = head;
+        head.prev = temp;
+        head = temp;
+        return head;
+    }
+
+    public static void insertAtTail(Node head,int val){
+        if(head==null) return;
+        Node temp = head;
+        while(temp.next!=null){
+            temp = temp.next;
+        }
+        Node t = new Node(val);
+        temp.next = t;
+        t.prev = temp;
+        temp = t;
+    }
+
+    public static void insertAt(Node head,int idx,int val){
+        Node temp = head;
+        for(int i=1;i<=idx-1;i++){
+            temp = temp.next;
+        }
+        Node t = new Node(val);
+        temp.next.prev = t;
+        t.prev =  temp;
+        t.next = temp.next;
+        temp.next = t;
+    }
+
+    public static void display(Node head) {
+        Node temp = head;
+        while (temp != null) {
+            System.out.print(temp.data + " <-> ");
+            temp = temp.next;
+        }
+        System.out.println();
+    }
+
+
+    public static void main(String[] args) {
+      Node a = new Node(1);
+      Node b = new Node(3);
+      Node c = new Node(5);
+      Node d = new Node(7);
+        a.prev = null;
+        a.next = b;
+        b.prev = a;
+        b.next = c;
+        c.prev = b;
+        c.next = d;
+        d.prev = c;
+        d.next = null;
+        a = insertAtStart(a,10);
+        display(a);
+        insertAtTail(a,45);
+        display(a);
+        insertAt(a,3,100);
+        display(a);
+    }
+}
