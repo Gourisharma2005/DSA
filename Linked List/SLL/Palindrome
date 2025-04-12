@@ -1,0 +1,39 @@
+
+import java.util.Stack;
+
+public class Palindrome {
+    public static class Node{
+        int data;
+        Node next;
+        Node(int data){ this.data = data;}
+    }
+    public static boolean isPalindrome(Node head){
+        Stack<Integer> stk = new Stack<>();
+        Node temp = head;
+        while(temp!=null){
+            stk.push(temp.data);
+            temp = temp.next;
+        }
+        temp = head;
+        while(temp!=null){
+            if(temp.data==stk.peek()){
+               return true;
+            }
+            temp = temp.next;
+            stk.pop();
+        }
+        return false;
+    }
+    public static void main(String[] args) {
+        Node a = new  Node(1);
+        Node b = new  Node(2);
+        Node c = new  Node(3);
+        Node d = new  Node(2);
+        Node e = new  Node(1);
+        a.next = b;
+        b.next = c;
+        c.next = d;
+        d.next = e;
+        System.out.println("Linked list is Palindrome  = "+isPalindrome(a));
+    }
+}
