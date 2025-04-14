@@ -1,0 +1,57 @@
+
+import java.util.ArrayList;
+import java.util.Collections;
+
+public class MergeTwoSortedLLUsingArraylist {
+    public static class Node {
+        int data;
+        Node next;
+        Node(int data){this.data = data;}
+    }
+
+    public static Node mergeTwoSortedLL(Node head1,Node head2 ){
+        ArrayList<Integer>num = new ArrayList<>();
+        Node temp  = head1;
+        while(temp!=null){
+            num.add(temp.data);
+            temp  =temp.next;
+        }
+          temp  = head2;
+        while(temp!=null){
+            num.add(temp.data);
+            temp  =temp.next;
+        }
+        Collections.sort(num);
+        Node head = new Node(0);
+        Node curr = head;
+        for (int val : num) {
+            curr.next = new Node(val);
+            curr = curr.next;
+        }
+        return head.next;
+    }
+
+    public static void printLL(Node head){
+        while(head!=null){
+            System.out.print(head.data + "->");
+            head  =head.next;
+        }
+        System.out.println();
+    }
+
+    public static void main(String[] args) {
+        Node a1 = new Node(1);
+        Node a2 = new Node(4);
+        Node a3 = new Node(6);
+        a1.next = a2;
+        a2.next = a3;
+        Node b1 = new Node(2);
+        Node b2 = new Node(3);
+        Node b3 = new Node(5);
+        b1.next = b2;
+        b2.next = b3;
+        Node merged = mergeTwoSortedLL(a1, b1);
+        System.out.println("Merged Sorted Linked List:");
+        printLL(merged);
+    }
+}
