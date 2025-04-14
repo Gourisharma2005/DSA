@@ -1,0 +1,58 @@
+
+public class MergeTwoSortedLLUsingLL {
+    public static class Node {
+        int data;
+        Node next;
+        Node(int data){this.data = data;}
+    }
+
+    public static Node mergeSortedLL(Node head1,Node head2){
+        Node temp1 = head1;
+        Node temp2 = head2;
+        Node head = new Node(0);
+        Node temp = head;
+        while(temp1!=null && temp2!=null){
+            if(temp1.data<temp2.data){
+                Node newNode = new Node(temp1.data);
+                temp.next = newNode;
+                temp =  newNode;
+                temp1 = temp1.next;
+            }
+            else{
+                Node newNode = new Node(temp2.data);
+                temp.next = newNode;
+                temp =  newNode;
+                temp2 = temp2.next;
+            }
+        }
+        if(temp1==null) temp.next = temp2;
+        else temp.next = temp1;
+        return head.next;
+    }
+
+    public static void printLL(Node head){
+        while(head!=null){
+            System.out.print(head.data + "->");
+            head  =head.next;
+        }
+        System.out.println();
+    }
+
+    public static void main(String[] args) {
+        Node a1 = new Node(1);
+        Node a2 = new Node(4);
+        Node a3 = new Node(6);
+        Node a4 = new Node(9);
+        a1.next = a2;
+        a2.next = a3;
+        a3.next = a4;
+        Node b1 = new Node(2);
+        Node b2 = new Node(7);
+        Node b3 = new Node(7);
+        b1.next = b2;
+        b2.next = b3;
+        Node merged = mergeSortedLL(a1, b1);
+        System.out.println("Merged Sorted Linked List:");
+        printLL(merged);
+    }
+}
