@@ -1,0 +1,61 @@
+import java.util.HashMap;
+
+public class CopyLLWithRandomPointers {
+    public static class Node {
+        int data;
+        Node next;
+        Node random;
+        Node(int data){this.data = data;}
+    }
+
+    public static Node cloneList(Node head){
+        if(head==null && head.next==null)return head;
+        HashMap<Node,Node>mp = new HashMap<>();
+        Node temp = head;
+        while(temp!=null){
+            mp.put(temp, new Node(temp.data));
+            temp = temp.next;
+        }
+        temp = head;
+        while(temp!=null){
+            Node copy = mp.get(temp);
+            copy.next = mp.get(temp.next);
+            copy.random = mp.get(temp.random);
+            temp = temp.next;
+        }
+        return mp.get(head);
+    }
+    
+    public static void printList(Node head) {
+        while (head!=null) {
+            if (head.random!=null) {
+                System.out.println("Node: "+head.data+", Random: "+head.random.data);
+            } else {
+                System.out.println("Node: "+head.data+", Random: -1");
+            }
+            head = head.next;
+        }
+    }
+
+    public static void main(String[] args) {
+        Node a = new Node(1);
+        Node b = new Node(2);
+        Node c = new Node(3);
+        Node d = new Node(4);
+
+        a.next = b;
+        b.next = c;
+        c.next = d;
+
+        a.random = d;
+        b.random = a;
+        c.random = b;
+        d.random = b;
+
+        System.out.println("Original list:");
+        printList(a);
+        Node cloned = cloneList(a);
+        System.out.println("\nCloned list:");
+        printList(cloned);
+    }
+}
