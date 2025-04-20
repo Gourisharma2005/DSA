@@ -1,0 +1,66 @@
+public class DeleteAllOccurrencesDLL {
+    public static class Node{
+        int data;
+         Node next;
+         Node prev;
+        Node(int data){
+            this.data = data;
+        }
+    }
+    public static Node deleteKey(Node head,int k){
+        Node temp = head;
+        while(temp!=null){
+            Node nextNode = temp.next;
+            Node prevNode = temp.prev;
+            if(temp.data==k){
+                if(temp==head) {
+                    head = temp.next;
+                    if (head != null) {
+                        head.prev = null;
+                    }
+                }
+                else {
+                    if (prevNode != null) prevNode.next = nextNode;
+                    if (nextNode != null)   nextNode.prev = prevNode;
+                }
+                temp = nextNode;
+            }
+            else temp =temp.next;
+        }
+        return head;
+    }
+    public static void display(Node random){
+        Node temp = random;
+        while(temp.prev!=null){
+            temp =  temp.prev;
+        }
+        while(temp!=null){
+            System.out.print(temp.data+"<->");
+            temp =  temp.next;
+        }
+        System.out.println();
+    }
+
+    public static void main(String[] args) {
+        Node a = new Node(1);
+        Node b = new Node(3);
+        Node c = new Node(5);
+        Node d = new Node(1);
+        Node e = new Node(8);
+        a.prev = null;
+        a.next = b;
+        b.prev = a;
+        b.next = c;
+        c.prev = b;
+        c.next = d;
+        d.prev = c;
+        d.next = e;
+        e.prev = d;
+        e.next = null;
+        System.out.println("Before : ");
+        display(a);
+        System.out.println("After : ");
+        a = deleteKey(a, 1);
+        display(a);
+    }
+}
