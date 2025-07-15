@@ -1,0 +1,10 @@
+public class RemoveAllOccUsingReplace {
+    public static String removeChar(String str, char ch) {
+        return str.replace(String.valueOf(ch), "");
+    }
+
+    public static void main(String[] args) {
+        String s = "hello";
+        System.out.println(removeChar(s,'l'));
+    }
+}
