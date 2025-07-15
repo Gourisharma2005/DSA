@@ -1,0 +1,17 @@
+public class RemoveAllOccOfChar {
+    public static String removeChar(String s, char c) {
+        StringBuilder sb = new StringBuilder(s);
+        for (int i = 0; i < sb.length(); i++) {
+            if (sb.charAt(i) == c) {
+                sb.deleteCharAt(i);
+                i--; 
+            }
+        }
+        return sb.toString();
+    }
+
+    public static void main(String[] args) {
+        String s = "hello";
+        System.out.println(removeChar(s,'l'));
+    }
+}
