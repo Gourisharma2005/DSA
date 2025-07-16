@@ -1,0 +1,15 @@
+package Strings;
+import java.util.Scanner;
+public class checkStringAreSame{
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("enter first value : ");
+        String s1 = sc.nextLine();
+        System.out.println("enter second value : ");
+        String s2 = sc.nextLine();
+        if(s1.equals(s2)) {
+            System.out.println("are equal");
+        }
+        else System.out.println("not equal");
+    }
+}
