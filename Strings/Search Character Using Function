@@ -1,0 +1,14 @@
+public class SearchCharUsingFunction {
+    
+    public static int findCharacterIndex(String s, char ch) {
+        return s.indexOf(ch);
+    }
+
+    public static void main(String[] args) {
+        String s = "geeksforgeeks";
+        char ch = 'k';
+
+        int index = findCharacterIndex(s, ch);
+        System.out.println(index);
+    }
+}
