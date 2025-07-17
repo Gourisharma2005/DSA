@@ -1,0 +1,20 @@
+public class SearchCharacter {
+    public static int findChar(String s, char ch) {
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) == ch) {
+                System.out.println("found at " + i);
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public static void main(String[] args) {
+        String s = "gouri";
+        char target = 'i';
+        int result = findChar(s,target);
+        if(result==-1) {
+            System.out.println("not found");
+        }
+    }
+}
