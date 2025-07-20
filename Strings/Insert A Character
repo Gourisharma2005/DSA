@@ -1,0 +1,15 @@
+package Strings;
+
+public class InsertAChar {
+    static String insertChar(StringBuilder sb, char c, int pos) {
+        sb.insert(pos, c);
+        return sb.toString();
+    }
+
+    public static void main(String[] args) {
+        StringBuilder sb = new StringBuilder("hell");
+        System.out.println(insertChar(sb, 'o', 4));
+    }
+    }
+
+
