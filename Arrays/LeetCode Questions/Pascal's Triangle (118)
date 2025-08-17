@@ -1,0 +1,17 @@
+class Solution {
+    public List<List<Integer>> generate(int numRows) {
+          List<List<Integer>> triangle = new ArrayList<>();
+
+        for (int rowNum = 0; rowNum < numRows; rowNum++) {
+            List<Integer> row = new ArrayList<>();
+            long val = 1;
+            row.add(1); 
+            for (int col = 1; col <= rowNum; col++) {
+                val = val * (rowNum - col + 1) / col;
+                row.add((int) val);
+            }
+            triangle.add(row);
+        }
+        return triangle;
+    }
+}
